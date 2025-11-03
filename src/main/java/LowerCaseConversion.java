@@ -1,6 +1,6 @@
 public class LowerCaseConversion{
     public static void main(String[] args) {
-        String s="Hello";
+        String s="He llo";
         System.out.println(toLowerCase(s));
     }
 
