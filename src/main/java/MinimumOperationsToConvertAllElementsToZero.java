@@ -1,0 +1,28 @@
+
+import java.util.HashMap;
+
+public class MinimumOperationsToConvertAllElementsToZero {
+    public static void main(String[] args) {
+        int[] nums={0,2};
+        System.out.println(minOperations(nums));
+    }
+
+        public static int minOperations(int[] nums) {
+            int n = nums.length;
+            int[] stack = new int[n + 1];
+            int top = 0, ans = 0;
+
+            for (int num : nums) {
+                while (stack[top] > num) {
+                    top--;
+                    ans++;
+                }
+                if (stack[top] != num) {
+                    top++;
+                    stack[top] = num;
+                }
+            }
+            return ans + top;
+        }
+
+}
