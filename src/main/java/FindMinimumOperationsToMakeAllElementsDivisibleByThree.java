@@ -8,6 +8,7 @@ public class FindMinimumOperationsToMakeAllElementsDivisibleByThree {
         System.out.println(minimumOperations(nums));
     }
 
+    
     public static int minimumOperations(int[] nums) {
         return (int) IntStream.of(nums).filter(no->no%3!=0).count();
     }
