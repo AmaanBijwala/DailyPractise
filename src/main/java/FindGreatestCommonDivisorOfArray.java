@@ -1,28 +1,13 @@
+import java.util.*;
+class FindGreatestCommonDivisorOfArray {
 
-public class FindGreatestCommonDivisorOfArray {
-
-    public static void main(String[] args) {
-        String ransomNote="aa";
-        String magazine="aab";
-        int [] nums={2,5,6,9,10};
-        System.out.println(findGCD(nums));
-    }
-
-    public static int findGCD(int[] nums) {
-        int max=Integer.MIN_VALUE;
-        int min=Integer.MAX_VALUE;
-        for(int i:nums){
-            max=Math.max(i,max);
-            min=Math.min(i,min);
+    public int findGCD(int[] nums) {
+        Arrays.sort(nums);
+        int ans=1;
+        for(int i=nums[0];i>0;i--){
+            if(nums[0]%i==0 && nums[nums.length-1]%i==0)
+                return i;
         }
-        return calculateGCD(min,max);
-    }
-    public static  int calculateGCD(int m,int n){
-        while(n!=0){
-            int temp=n;
-            n=m%n;
-            m=temp;
-        }
-        return m;
+        return ans;
     }
 }
