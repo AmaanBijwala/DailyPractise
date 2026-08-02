@@ -1,32 +1,19 @@
-import java.util.*;
-public class NumberOfDaysToDivideALongCorridor {
-    public static void main(String[] args)
-    {
-        String corridor="SSPPSPS";
-        System.out.println(numberOfWays(corridor));
-    }
 
+public class WeightedWordMapping {
 
-        public static int numberOfWays(String corridor) {
-            int mod = 1_000_000_007;
-            ArrayList<Integer> pos = new ArrayList<>();
-
-            for (int i = 0; i < corridor.length(); i++) {
-                if (corridor.charAt(i) == 'S') {
-                    pos.add(i);
-                }
+    public String mapWordWeights(String[] words, int[] weights) {
+        String res="";
+        String a="abcdefghijklmnopqrstuvwxyz";
+        String rev=new StringBuilder(a).reverse().toString();
+        for(String word: words){
+            int sum=0;
+            for(Character c:word.toCharArray()){
+                int idx=c-97;
+                sum+=weights[idx];
             }
-
-            if (pos.size() % 2 == 1 || pos.size() == 0) {
-                return 0;
-            }
-
-            long res = 1;
-            for (int i = 2; i < pos.size(); i += 2) {
-                int len_of_gap = pos.get(i) - pos.get(i - 1);
-                res = (res * len_of_gap) % mod;
-            }
-
-            return (int) res;
+            int n=sum%26;
+            res+=String.valueOf(rev.charAt(n));
         }
+        return res;
     }
+}
